@@ -423,7 +423,7 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
     message: this.message.value
   };
 
-  fetch("YOUR_GOOGLE_SCRIPT_WEBAPP_URL", {
+  fetch("https://script.google.com/macros/s/AKfycbznqbDMU3I3VnW1EVyZP2gCJ6oHDskhTsIWg1CZW8dbKLP3-7tf45cpPjt0E6-009NTTQ/exec", {
     method: "POST",
     body: JSON.stringify(formData)
   })
