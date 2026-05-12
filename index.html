@@ -400,13 +400,44 @@
         <p><strong>Email:</strong> vishnu.ks@nodezt.com</p>
         <p><strong>Address:</strong><br>NODEZT,<br>Perumpadappu,<br>Malappuram District,<br>Kerala - 679580,<br>India</p>
       </div>
-      <form>
-        <input type="text" placeholder="Your Name" required />
-        <input type="email" placeholder="Your Email" required />
-        <input type="text" placeholder="Subject" />
-        <textarea placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
+      <form id="contactForm">
+  <input type="text" name="name" placeholder="Your Name" required />
+  
+  <input type="email" name="email" placeholder="Your Email" required />
+  
+  <input type="text" name="subject" placeholder="Subject" />
+  
+  <textarea name="message" placeholder="Your Message" required></textarea>
+  
+  <button type="submit">Send Message</button>
+</form>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const formData = {
+    name: this.name.value,
+    email: this.email.value,
+    subject: this.subject.value,
+    message: this.message.value
+  };
+
+  fetch("YOUR_GOOGLE_SCRIPT_WEBAPP_URL", {
+    method: "POST",
+    body: JSON.stringify(formData)
+  })
+  .then(response => response.text())
+  .then(data => {
+    alert("Message Sent Successfully!");
+    document.getElementById("contactForm").reset();
+  })
+  .catch(error => {
+    alert("Error sending message");
+    console.error(error);
+  });
+});
+</script>
     </div>
   </section>
 
